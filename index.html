@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101114">
+<title>Uma mensagem para a equipa 🐶</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<section id="game-screen" class="screen">
+  <div class="topbar">
+    <div class="brand"><span class="paw">🐾</span> Daily Scrum — Secret Challenge</div>
+    <div id="challenge-status" class="challenge-status">Segredo em progresso</div>
+  </div>
+  <div class="hero">
+    <div class="mascot-wrap">
+      <div id="mascot" class="mascot"><img src="assets/artur-portrait.jpg" alt="Artur"></div>
+      <span id="speech" class="speech">Tenho uma coisa para vos dizer...</span>
+    </div>
+    <h1>Descubram a mensagem.</h1>
+    <p class="subtitle">Uma letra de cada vez. Trabalhem em equipa. <span class="secret-hint">Não façam deploy à pressa. 😈</span></p>
+    <div id="board" class="board" aria-label="Mensagem escondida"></div>
+    <div class="status-row">
+      <div><span class="label">Letras erradas</span><div id="wrong" class="wrong">—</div></div>
+      <div class="hint"><span class="label">Dica</span><span id="hint-text">Há alguém que já conhece o segredo.</span></div>
+    </div>
+    <div id="keyboard" class="keyboard" aria-label="Teclado"></div>
+    <div class="controls">
+      <button id="guess-btn" class="secondary">💭 Tentar adivinhar a mensagem</button>
+      <button id="reset-btn" class="ghost">Recomeçar</button>
+    </div>
+  </div>
+</section>
+
+<section id="reveal-screen" class="screen reveal hidden" aria-live="polite">
+  <div class="confetti" id="confetti"></div>
+  <div class="reveal-inner">
+    <div id="reveal-eyebrow" class="eyebrow">🎉 SEGREDO DESBLOQUEADO 🎉</div>
+    <p id="reveal-intro" class="reveal-intro">O Artur tem uma novidade...</p>
+
+    <div id="word-reveal" class="word-reveal" aria-label="Revelação">
+      <div class="reveal-line">O ARTUR VAI TER</div>
+      <div id="big-word" class="big-word">UM IRMÃO!</div>
+    </div>
+
+    <div id="final-message" class="final-message hidden">
+      <h2>O ARTUR VAI TER<br><span>UM IRMÃO!</span></h2>
+      <p class="reveal-copy">Artur acaba de ser promovido a <strong>irmão mais velho</strong>.</p>
+      <div class="reveal-grid">
+        <figure class="photo-card artur-card">
+          <div class="photo-badge">🐶 O irmão mais velho</div>
+          <img src="assets/artur-ultrasound-together.jpg" alt="Artur com a ecografia">
+        </figure>
+        <figure class="photo-card ultrasound-card">
+          <div class="photo-badge">👶 O novo colega</div>
+          <img src="assets/ultrasound.jpg" alt="Ecografia do bebé">
+        </figure>
+      </div>
+      <p class="deploy">ETA: <strong>em breve™</strong> &nbsp;·&nbsp; deployment humano em progresso</p>
+      <button id="again-btn" class="primary">🐾 Ver outra vez</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<dialog id="guess-dialog">
+<form method="dialog" id="guess-form">
+  <button class="dialog-close" value="cancel" aria-label="Fechar">×</button>
+  <h3>Então vá, qual é a mensagem?</h3>
+  <p>Podem arriscar. Uma tentativa. 😈</p>
+  <input id="phrase-input" autocomplete="off" spellcheck="false" placeholder="Escrevam a mensagem..." aria-label="A vossa tentativa">
+  <div id="guess-error" class="guess-error"></div>
+  <div class="dialog-actions">
+    <button class="secondary" value="cancel">Cancelar</button>
+    <button class="primary" id="submit-guess" value="default">Enviar palpite</button>
+  </div>
+</form>
+</dialog>
+<script src="game.js"></script>
+</body>
+</html>
